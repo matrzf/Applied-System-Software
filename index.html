@@ -1,98 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wish Wheel</title>
-    <link rel="stylesheet" href="/menu/stylesMenu.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+  <title>Document</title>
 </head>
 <body>
-    <div class="topcontainer">
-        <div class="background"></div>
-        <img src="/Image/Animals/YuumiNormal.png" alt="Yuumi" class="character yuumi">
-        <img src="/Image/Animals/VoltNormal.png" alt="Volt" class="character volt">
-        <img src="/Image/Animals/SaturnNormal.png" alt="Saturn" class="character saturn">
-        <img src="/Image/Animals/CoffyNormal.png" alt="Coffy" class="character coffy">
-        <div class="text title">The Wish Wheel</div>
-        <div class="text subtitle">want cookies? Make a wish!</div>
-        <a href="page jeu/index.html" class="play-button">
-            <img src="/Image/Buttons/Play.png" alt="Play">
-        </a>
-        <div class="text rules">Rules</div>
-        <div class="text aim">AIM: COLLECT 10,000 COOKIES</div>
-        <div class="text instruction">
-            <div>Use the wheel to collect them</div>
-            <div>Complete the sentences to have more cookies !</div>
-            </div>
+
+  <div id="gameParameters">
+    <div id="select-players">
+      <p>Choose the number of players :<p>
+      <select naxme="No-Players" id="playerSelect">
+        <option value="2p">2</option>
+        <option value="3p">3</option>
+        <option value="4p">4</option>
+      </select>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const characters = document.querySelectorAll('.character');
+    <div id = box-players>
+      <div id="select-usernames">
+        <p>Enter the usernames :</p>
+        <div>
+          <input type="text" name="username" id="username1">
+          <input type="text" name="username" id="username2">
+          <input type="text" name="username" id="username3">
+          <input type="text" name="username" id="username4">
+      </div>
+      </div>
+    </div>
+    <button id="startButton" class="btn">
+      <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span class="text">Start</span>
+    </button>
+    <button onclick="redirect()" class="btn">
+      <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span class="text">Back to menu</span>
+    </button>
+  </div>
 
-            function getRandomTransform() {
-                const randomX = Math.floor(Math.random() * 30) - 10; // Random value between -10 and 10
-                const randomY = Math.floor(Math.random() * 30) - 10; // Random value between -10 and 10
-                const randomRotate = Math.floor(Math.random() * 30) - 10; // Random rotation between -10 and 10 degrees
-                return `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
-            }
+  <div id="gamePage">
+    <div id="card">
+      <button id="endGameButton">End Game</button>
+      <div id="player-inputs">
+        <div id="stockingTable"><div class="table" id="table"></div></div>
+        <div id="game-container">
+          <h1>Sentence</h1>
+          <div id="sentence-container">
+              <!-- Sentence with hidden letters will be displayed here -->
+          </div>
+          <div id="message"></div>
+          <div id="controls">
+              <input type="text" class="guessing-input" id="guess-input" maxlength="1" placeholder="Enter a letter">
+              <button class="validation-buttons" id="guess-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Guess</span>
+              </button>
+              <input type="text" class="guessing-input" id="guess-sentence-input" placeholder="Guess the sentence">
+              <button class="validation-buttons" id="guess-sentence-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Guess</span>
+              </button>
+              <input type="text" class="guessing-input" id="buy-vowel-input" maxlength="1" placeholder="Buy a vowel">
+              <button class="validation-buttons" id="buy-vowel-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Buy</span>
+              </button>
+          </div>
+          <button class="validation-buttons" id="skip-turn-button">
+              <span class="transition"></span>
+              <span class="gradient"></span>
+              <span class="label">Skip Turn</span>
+          </button>
+          <div id="player-turn"></div>
+        </div>
+      </div>
+      
+      
+      <div id="wheel-elements">
+        <div id="usedLettersDisp">
+          <p>Used letters :</p>
+          <div id="lettersDiv">-</div>
+        </div>
+        <div class="wheelContainer">
+          <div class="spinBtn">Spin</div>
+          <div class="wheel">
+            <div class="number" style="--i:1;--clr:#db7093"><span>800</span></div>
+            <div class="number" style="--i:2;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:3;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:4;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:5;--clr:#db7093"><span>900</span></div>
+            <div class="number" id="noDollars" style="--i:6;--clr:#f47822"><span>Bankrupt</span></div>
+            <div class="number" style="--i:7;--clr:#ff340f"><span>5000</span></div>
+            <div class="number" style="--i:8;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:9;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:10;--clr:#ffda9b"><span>700</span></div>
+            <div class="number" style="--i:11;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:12;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:13;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:14;--clr:#ffda9b"><span>700</span></div>
+            <div class="number" id="noDollars" style="--i:15;--clr:##9a5336"><span>Lose a turn</span></div>
+            <div class="number" style="--i:16;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:17;--clr:#3cb371"><span>550</span></div>
+            <div class="number" style="--i:18;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:19;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" id="noDollars" style="--i:20;--clr:#f47822"><span>Bankrupt</span></div>
+            <div class="number" style="--i:21;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:22;--clr:#d63e92"><span>50</span></div>
+            <div class="number" style="--i:23;--clr:#ffda9b"><span>700</span></div>
+          </div>
+        </div>
+        <div id="valuePicked">Selected value :</div>
+      </div>
+    </div>
+  </div>
 
-            function animateCharacter(character) {
-                character.style.transform = getRandomTransform();
-            }
+  <div id="endGamePage">
+    <div id="endImages">
+      <img src="/Image/Animals/YuumiNormal.png" alt="Yuumi" class="character yuumi">
+      <img src="/Image/Animals/VoltNormal.png" alt="Volt" class="character volt">
+      <img src="/Image/Animals/SaturnNormal.png" alt="Saturn" class="character saturn">
+      <img src="/Image/Animals/CoffyNormal.png" alt="Coffy" class="character coffy">
+    </div>
+    <div id="endGameBlock">
+      <h1 id="winnerText">End of game</h1>
+      <div id="table2"></div>
+      <p>Go back to menu to set up a new game.</p>
+      <button id="newGameButton" class="btn">
+        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+        </svg>
+        <span class="text">Back to menu</span>
+      </button>
+    </div>
+  </div>
 
-            characters.forEach(character => {
-                setInterval(() => {
-                    animateCharacter(character);
-                }, 1000); // Change position and rotation every second
-            });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.addEventListener('mousemove', function(e) {
-                createRainbowTrail(e.pageX, e.pageY);
-            });
+  <script src="index.js"></script>
 
-            function createRainbowTrail(x, y) {
-                const trail = document.createElement('div');
-                trail.className = 'rainbow-trail';
-                trail.style.left = `${x}px`;
-                trail.style.top = `${y}px`;
-                document.body.appendChild(trail);
-
-                setTimeout(() => {
-                    trail.remove();
-                }, 1500); // Adjust the duration to match the CSS animation duration
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const characters = document.querySelectorAll('.character');
-
-            function createCookie(x) {
-                const cookie = document.createElement('div');
-                cookie.className = 'cookie';
-                cookie.style.left = `${x}px`;
-                cookie.style.top = '0px'; // Commence en haut de la page
-                document.body.appendChild(cookie);
-
-                cookie.addEventListener('animationend', () => {
-                    cookie.remove();
-                });
-            }
-
-            function createCookieRain(x) {
-                for (let i = 0; i < 30; i++) {
-                    setTimeout(() => {
-                        const offsetX = Math.random() * 200 - 100; // Random horizontal offset
-                        createCookie(x + offsetX);
-                    }, i * 100); // Stagger the creation of each cookie
-                }
-            }
-
-            characters.forEach(character => {
-                character.addEventListener('click', (e) => {
-                    createCookieRain(e.pageX);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
