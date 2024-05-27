@@ -367,15 +367,3 @@ th, td {
   top: 5px;
   left: 5px;
 }
-
-#endImages{
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 20px;
-  
-}
-
-#endGamePage img{
-  width: 10%;
-}
