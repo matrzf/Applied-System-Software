@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wish Wheel</title>
+    <link rel="stylesheet" href="/menu/stylesMenu.css">
+</head>
+<body>
+    <div class="topcontainer">
+        <div class="background"></div>
+        <img src="/Image/Animals/YuumiNormal.png" alt="Yuumi" class="character yuumi">
+        <img src="/Image/Animals/VoltNormal.png" alt="Volt" class="character volt">
+        <img src="/Image/Animals/SaturnNormal.png" alt="Saturn" class="character saturn">
+        <img src="/Image/Animals/CoffyNormal.png" alt="Coffy" class="character coffy">
+        <div class="text title">The Wish Wheel</div>
+        <div class="text subtitle">want cookies? Make a wish!</div>
+        <a href="page jeu/index.html" class="play-button">
+            <img src="/Image/Buttons/Play.png" alt="Play">
+        </a>
+        <div class="text rules">Rules</div>
+        <div class="text aim">AIM: COLLECT 10,000 COOKIES</div>
+        <div class="text instruction">
+            <div>Use the wheel to collect them</div>
+            <div>Complete the sentences to have more cookies !</div>
+            </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const characters = document.querySelectorAll('.character');
 
+            function getRandomTransform() {
+                const randomX = Math.floor(Math.random() * 30) - 10; // Random value between -10 and 10
+                const randomY = Math.floor(Math.random() * 30) - 10; // Random value between -10 and 10
+                const randomRotate = Math.floor(Math.random() * 30) - 10; // Random rotation between -10 and 10 degrees
+                return `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+            }
+
+            function animateCharacter(character) {
+                character.style.transform = getRandomTransform();
+            }
+
+            characters.forEach(character => {
+                setInterval(() => {
+                    animateCharacter(character);
+                }, 1000); // Change position and rotation every second
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.addEventListener('mousemove', function(e) {
+                createRainbowTrail(e.pageX, e.pageY);
+            });
+
+            function createRainbowTrail(x, y) {
+                const trail = document.createElement('div');
+                trail.className = 'rainbow-trail';
+                trail.style.left = `${x}px`;
+                trail.style.top = `${y}px`;
+                document.body.appendChild(trail);
+
+                setTimeout(() => {
+                    trail.remove();
+                }, 1500); // Adjust the duration to match the CSS animation duration
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const characters = document.querySelectorAll('.character');
+
+            function createCookie(x) {
+                const cookie = document.createElement('div');
+                cookie.className = 'cookie';
+                cookie.style.left = `${x}px`;
+                cookie.style.top = '0px'; // Commence en haut de la page
+                document.body.appendChild(cookie);
+
+                cookie.addEventListener('animationend', () => {
+                    cookie.remove();
+                });
+            }
+
+            function createCookieRain(x) {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const offsetX = Math.random() * 200 - 100; // Random horizontal offset
+                        createCookie(x + offsetX);
+                    }, i * 100); // Stagger the creation of each cookie
+                }
+            }
+
+            characters.forEach(character => {
+                character.addEventListener('click', (e) => {
+                    createCookieRain(e.pageX);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
