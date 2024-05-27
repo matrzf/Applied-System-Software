@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="gameParameters">
+    <div id="select-players">
+      <p>Choose the number of players :<p>
+      <select naxme="No-Players" id="playerSelect">
+        <option value="2p">2</option>
+        <option value="3p">3</option>
+        <option value="4p">4</option>
+      </select>
+    </div>
+    <div id = box-players>
+      <div id="select-usernames">
+        <p>Enter the usernames :</p>
+        <div>
+          <input type="text" name="username" id="username1">
+          <input type="text" name="username" id="username2">
+          <input type="text" name="username" id="username3">
+          <input type="text" name="username" id="username4">
+      </div>
+      </div>
+    </div>
+    <button id="startButton">Start</button>
+    <button onclick="redirect()">Back to menu</button>
+  </div>
+
+  <div id="gamePage">
+    <button id="endGameButton">endGame</button>
+    <div id="player-inputs">
+      <p>Used letters :</p>
+      <div id="lettersDiv"></div>
+      <div id="stockingTable"><div class="table" id="table"></div></div>
+      <div id="game-container">
+        <h1>Sentence</h1>
+        <div id="sentence-container">
+            <!-- Sentence with hidden letters will be displayed here -->
+        </div>
+        <div id="message"></div>
+        <div id="controls">
+            <input type="text" class="guessing-input" id="guess-input" maxlength="1" placeholder="Enter a letter">
+            <button class="validation-buttons" id="guess-button">Guess</button>
+            <input type="text" class="guessing-input" id="guess-sentence-input" placeholder="Guess the sentence">
+            <button class="validation-buttons" id="guess-sentence-button">Guess</button>
+            <input type="text" class="guessing-input" id="buy-vowel-input" maxlength="1" placeholder="Buy a vowel">
+            <button class="validation-buttons" id="buy-vowel-button">Buy</button>
+        </div>
+        <button class="validation-buttons" id="skip-turn-button">Skip Turn</button>
+        <div id="player-turn"></div>
+      </div>
+    </div>
+    
+    
+    <div id="wheel-elements">
+      <div class="wheelContainer">
+        <div class="spinBtn">Spin</div>
+        <div class="wheel">
+          <div class="number" style="--i:1;--clr:#db7093"><span>800</span></div>
+          <div class="number" style="--i:2;--clr:#20b2aa"><span>500</span></div>
+          <div class="number" style="--i:3;--clr:#d63e92"><span>650</span></div>
+          <div class="number" style="--i:4;--clr:#daa520"><span>500</span></div>
+          <div class="number" style="--i:5;--clr:#ff340f"><span>900</span></div>
+          <div class="number" style="--i:6;--clr:#ff7f50"><span>Bankrupt</span></div>
+          <div class="number" style="--i:7;--clr:#3cb371"><span>5000</span></div>
+          <div class="number" style="--i:8;--clr:#4169e1"><span>500</span></div>
+          <div class="number" style="--i:9;--clr:#ff7f50"><span>600</span></div>
+          <div class="number" style="--i:10;--clr:#ff340f"><span>700</span></div>
+          <div class="number" style="--i:11;--clr:#db7093"><span>600</span></div>
+          <div class="number" style="--i:12;--clr:#20b2aa"><span>650</span></div>
+          <div class="number" style="--i:13;--clr:#d63e92"><span>500</span></div>
+          <div class="number" style="--i:14;--clr:#daa520"><span>700</span></div>
+          <div class="number" style="--i:15;--clr:#ff340f"><span>Lose a turn</span></div>
+          <div class="number" style="--i:16;--clr:#ff7f50"><span>600</span></div>
+          <div class="number" style="--i:17;--clr:#3cb371"><span>550</span></div>
+          <div class="number" style="--i:18;--clr:#4169e1"><span>500</span></div>
+          <div class="number" style="--i:19;--clr:#ff7f50"><span>600</span></div>
+          <div class="number" style="--i:20;--clr:#db7093"><span>Bankrupt</span></div>
+          <div class="number" style="--i:21;--clr:#20b2aa"><span>650</span></div>
+          <div class="number" style="--i:22;--clr:#d63e92"><span>Free Play</span></div>
+          <div class="number" style="--i:23;--clr:#daa520"><span>700</span></div>
+        </div>
+      </div>
+      <div id="valuePicked">Selected value :</div>
+    </div>
+
+  </div>
+
+  <div id="endGamePage">
+    <div id="endGameBlock">
+      <h1 id="winnerText">End of game</h1>
+      <div id="table2"></div>
+      <p>Go back to menu to set up a new game.</p>
+      <button id="newGameButton">New game</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
