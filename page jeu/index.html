@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/page jeu/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
@@ -28,76 +31,116 @@
       </div>
       </div>
     </div>
-    <button id="startButton">Start</button>
-    <button onclick="redirect()">Back to menu</button>
+    <button id="startButton" class="btn">
+      <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span class="text">Start</span>
+    </button>
+    <button onclick="redirect()" class="btn">
+      <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span class="text">Back to menu</span>
+    </button>
   </div>
 
   <div id="gamePage">
-    <button id="endGameButton">endGame</button>
-    <div id="player-inputs">
-      <p>Used letters :</p>
-      <div id="lettersDiv"></div>
-      <div id="stockingTable"><div class="table" id="table"></div></div>
-      <div id="game-container">
-        <h1>Sentence</h1>
-        <div id="sentence-container">
-            <!-- Sentence with hidden letters will be displayed here -->
-        </div>
-        <div id="message"></div>
-        <div id="controls">
-            <input type="text" class="guessing-input" id="guess-input" maxlength="1" placeholder="Enter a letter">
-            <button class="validation-buttons" id="guess-button">Guess</button>
-            <input type="text" class="guessing-input" id="guess-sentence-input" placeholder="Guess the sentence">
-            <button class="validation-buttons" id="guess-sentence-button">Guess</button>
-            <input type="text" class="guessing-input" id="buy-vowel-input" maxlength="1" placeholder="Buy a vowel">
-            <button class="validation-buttons" id="buy-vowel-button">Buy</button>
-        </div>
-        <button class="validation-buttons" id="skip-turn-button">Skip Turn</button>
-        <div id="player-turn"></div>
-      </div>
-    </div>
-    
-    
-    <div id="wheel-elements">
-      <div class="wheelContainer">
-        <div class="spinBtn">Spin</div>
-        <div class="wheel">
-          <div class="number" style="--i:1;--clr:#db7093"><span>800</span></div>
-          <div class="number" style="--i:2;--clr:#20b2aa"><span>500</span></div>
-          <div class="number" style="--i:3;--clr:#d63e92"><span>650</span></div>
-          <div class="number" style="--i:4;--clr:#daa520"><span>500</span></div>
-          <div class="number" style="--i:5;--clr:#ff340f"><span>900</span></div>
-          <div class="number" style="--i:6;--clr:#ff7f50"><span>Bankrupt</span></div>
-          <div class="number" style="--i:7;--clr:#3cb371"><span>5000</span></div>
-          <div class="number" style="--i:8;--clr:#4169e1"><span>500</span></div>
-          <div class="number" style="--i:9;--clr:#ff7f50"><span>600</span></div>
-          <div class="number" style="--i:10;--clr:#ff340f"><span>700</span></div>
-          <div class="number" style="--i:11;--clr:#db7093"><span>600</span></div>
-          <div class="number" style="--i:12;--clr:#20b2aa"><span>650</span></div>
-          <div class="number" style="--i:13;--clr:#d63e92"><span>500</span></div>
-          <div class="number" style="--i:14;--clr:#daa520"><span>700</span></div>
-          <div class="number" style="--i:15;--clr:#ff340f"><span>Lose a turn</span></div>
-          <div class="number" style="--i:16;--clr:#ff7f50"><span>600</span></div>
-          <div class="number" style="--i:17;--clr:#3cb371"><span>550</span></div>
-          <div class="number" style="--i:18;--clr:#4169e1"><span>500</span></div>
-          <div class="number" style="--i:19;--clr:#ff7f50"><span>600</span></div>
-          <div class="number" style="--i:20;--clr:#db7093"><span>Bankrupt</span></div>
-          <div class="number" style="--i:21;--clr:#20b2aa"><span>650</span></div>
-          <div class="number" style="--i:22;--clr:#d63e92"><span>Free Play</span></div>
-          <div class="number" style="--i:23;--clr:#daa520"><span>700</span></div>
+    <div id="card">
+      <button id="endGameButton">End Game</button>
+      <div id="player-inputs">
+        <div id="stockingTable"><div class="table" id="table"></div></div>
+        <div id="game-container">
+          <h1>Sentence</h1>
+          <div id="sentence-container">
+              <!-- Sentence with hidden letters will be displayed here -->
+          </div>
+          <div id="message"></div>
+          <div id="controls">
+              <input type="text" class="guessing-input" id="guess-input" maxlength="1" placeholder="Enter a letter">
+              <button class="validation-buttons" id="guess-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Guess</span>
+              </button>
+              <input type="text" class="guessing-input" id="guess-sentence-input" placeholder="Guess the sentence">
+              <button class="validation-buttons" id="guess-sentence-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Guess</span>
+              </button>
+              <input type="text" class="guessing-input" id="buy-vowel-input" maxlength="1" placeholder="Buy a vowel">
+              <button class="validation-buttons" id="buy-vowel-button">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Buy</span>
+              </button>
+          </div>
+          <button class="validation-buttons" id="skip-turn-button">
+              <span class="transition"></span>
+              <span class="gradient"></span>
+              <span class="label">Skip Turn</span>
+          </button>
+          <div id="player-turn"></div>
         </div>
       </div>
-      <div id="valuePicked">Selected value :</div>
+      
+      
+      <div id="wheel-elements">
+        <div id="usedLettersDisp">
+          <p>Used letters :</p>
+          <div id="lettersDiv">-</div>
+        </div>
+        <div class="wheelContainer">
+          <div class="spinBtn">Spin</div>
+          <div class="wheel">
+            <div class="number" style="--i:1;--clr:#db7093"><span>800</span></div>
+            <div class="number" style="--i:2;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:3;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:4;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:5;--clr:#db7093"><span>900</span></div>
+            <div class="number" id="noDollars" style="--i:6;--clr:#f47822"><span>Bankrupt</span></div>
+            <div class="number" style="--i:7;--clr:#ff340f"><span>5000</span></div>
+            <div class="number" style="--i:8;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:9;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:10;--clr:#ffda9b"><span>700</span></div>
+            <div class="number" style="--i:11;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:12;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:13;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:14;--clr:#ffda9b"><span>700</span></div>
+            <div class="number" id="noDollars" style="--i:15;--clr:##9a5336"><span>Lose a turn</span></div>
+            <div class="number" style="--i:16;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" style="--i:17;--clr:#3cb371"><span>550</span></div>
+            <div class="number" style="--i:18;--clr:#f6cfd5"><span>500</span></div>
+            <div class="number" style="--i:19;--clr:#e3dbe3"><span>600</span></div>
+            <div class="number" id="noDollars" style="--i:20;--clr:#f47822"><span>Bankrupt</span></div>
+            <div class="number" style="--i:21;--clr:#20b2aa"><span>650</span></div>
+            <div class="number" style="--i:22;--clr:#d63e92"><span>50</span></div>
+            <div class="number" style="--i:23;--clr:#ffda9b"><span>700</span></div>
+          </div>
+        </div>
+        <div id="valuePicked">Selected value :</div>
+      </div>
     </div>
-
   </div>
 
   <div id="endGamePage">
+    <div id="endImages">
+      <img src="/Image/Animals/YuumiNormal.png" alt="Yuumi" class="character yuumi">
+      <img src="/Image/Animals/VoltNormal.png" alt="Volt" class="character volt">
+      <img src="/Image/Animals/SaturnNormal.png" alt="Saturn" class="character saturn">
+      <img src="/Image/Animals/CoffyNormal.png" alt="Coffy" class="character coffy">
+    </div>
     <div id="endGameBlock">
       <h1 id="winnerText">End of game</h1>
       <div id="table2"></div>
       <p>Go back to menu to set up a new game.</p>
-      <button id="newGameButton">New game</button>
+      <button id="newGameButton" class="btn">
+        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+        </svg>
+        <span class="text">Back to menu</span>
+      </button>
     </div>
   </div>
 
