@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function redirect() {
-  window.location.href = '../menu.html';
+  window.location.href = '../index.html';
 }
 
       
