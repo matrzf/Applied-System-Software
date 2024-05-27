@@ -1,0 +1,381 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: "Poetsen One", sans-serif;
+}
+
+body{
+  background-color: #fde4e3;
+}
+
+#gameParameters{
+  margin:auto;
+  background-color: #b1d1da;
+  width: 300px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#select-players{
+  background-color: #f3f6ee;
+  height: 70px;
+  width: 250px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#select-usernames{
+  background-color: #f3f6ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 125px;
+  width: 250px;
+}
+
+#gameParameters button{
+  padding: 5px 10px;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.btn {
+  border: none;
+  width: 15em;
+  height: 5em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #f3f6ee;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+  fill: black;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: black;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg,#A47CF3,#683FEA);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 180px 0px #9917FF;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+}
+
+#gamePage{
+  display: none;
+  background-color: #fde4e3;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#card{
+  display: flex;
+  background-color: #b1d1da;
+  justify-content: space-around;
+  align-items: center;
+  width: 96%;
+  height: 92vh;
+  position: relative;
+  border-radius: 10px;
+}
+
+#player-inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+
+}
+
+#wheel-elements{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 400px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+#usedLettersDisp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheelContainer{
+  position: relative;
+  width:500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheelContainer .spinBtn{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.1em;
+  border: 4px solid rgba (0,0,0,0.75);
+  cursor: pointer;
+  user-select: none;
+}
+
+.wheelContainer .spinBtn::before{
+  content: '';
+  position: absolute;
+  top: -28px;
+  width: 20px;
+  height: 30px;
+  background: #fff;
+  clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+.wheelContainer .wheel{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 5px #333,
+  0 0 0 15px #fff,
+  0 0 0 18px #111;
+  transition: transform 5s ease-in-out;
+}
+
+.wheelContainer .wheel .number{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: var(--clr);
+  transform-origin: bottom right;
+  transform: rotate(calc(360deg/23*var(--i)));
+  clip-path: polygon(0 0, 23.5% 0, 100% 100%, 0 23.5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+}
+
+.wheelContainer .wheel .number span{
+  position: relative;
+  transform: rotate(45deg);
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 3px 5px 2px rgba(0,0,0,0.75);
+}
+
+.wheelContainer .wheel .number span::after{
+  content: '$';
+  position: absolute;
+  font-size: 0.75em;
+  font-weight: 500;
+
+}
+
+.wheelContainer .wheel #noDollars span::after{
+  content: '';
+}
+
+#game-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+}
+
+#sentence-container {
+  font-size: 24px;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#message {
+  margin-bottom: 10px;
+  color: red;
+  height: 40px;
+}
+
+#controls {
+  margin-bottom: 10px;
+}
+
+.guessing-input {
+  margin-top: 2px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.validation-buttons {
+  padding: 7px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#buy-vowel-button{
+  width: 64px
+}
+
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.label {
+  position: relative;
+  top: -1px;
+}
+
+.transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: #db7093;
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.validation-buttons:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+.validation-buttons:active {
+  transform: scale(0.97);
+}
+
+
+#player-turn {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#endGamePage{
+  display: none;
+  width: 100%;
+  height: 100vh;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fde4e3;
+}
+
+#endGameBlock{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #b1d1da;;
+  height: 400px;
+  width: 600px;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+#card #endGameButton{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+#endImages{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 20px;
+  
+}
+
+#endGamePage img{
+  width: 10%;
+}
