@@ -1,0 +1,114 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topcontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/background.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1; /* Place the background behind other elements */
+}
+
+.character {
+    position: absolute;
+    width: 8%; /* Smaller characters */
+}
+
+.yuumi {
+    bottom: 11%;
+    right: 10%;
+}
+
+.volt {
+    bottom: 11%;
+    right: 20%;
+}
+
+.saturn {
+    bottom: 11%;
+    right: 30%;
+}
+
+.coffy {
+    bottom: 11%;
+    right: 40%;
+}
+
+.text {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.title {
+    top: 35%;
+    left: 5%;
+    font-size: 3em;
+}
+
+.subtitle {
+    top: 41%;
+    left: 15%;
+    font-size: 1.5em;
+}
+
+.play-button img {
+    position: absolute;
+    width: 200px;
+    top : 11%;
+    right : 4%;
+}
+
+.rules {
+    bottom: 5%;
+    left: 5%;
+    font-size: 1.5em;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.aim {
+    top: 90%;
+    right: 5%;
+    font-size: 1.2em;
+    width: 40%;
+}
+
+.instruction {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    align-content: stretch;
+    top: 93%;
+    right: 20%;
+    font-size: 1em;
+    width: 40%;
+    color: rgb(90, 90, 90);
+}
