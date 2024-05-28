@@ -1,3 +1,4 @@
+/*
 document.querySelector('.spin-button').addEventListener('click', spinWheel);
 
 function spinWheel() {
@@ -20,3 +21,4 @@ function spinWheel() {
 
     document.querySelector('.wheel').innerHTML = `<img src="${characterImages[randomResult]}" alt="Result Character" />`;
 }
+*/
