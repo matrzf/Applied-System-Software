@@ -522,6 +522,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+document.getElementById("rulesButton").addEventListener("click", function() {
+  var pdfUrl = "rules.pdf";
+  var windowFeatures = "width=800,height=600,scrollbars=yes,resizable=yes";
+  window.open(pdfUrl, "_blank", windowFeatures);
+});
 
 function redirect() {
   window.location.href = '../menugenial/menu.html';
