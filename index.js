@@ -502,6 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   startButton.addEventListener('click', function() {
     if(createTable()){
+      alert("You can't use the same username");
       return
     };
 
