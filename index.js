@@ -40,8 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let sentences = [
     "Hello world",
-    "Hola a todos",
-    "Bonjour le monde"
+    "Guess this sentence",
+    "Applied system software",
+    "Riga technical university",
+    "Computer science"
   ];
   let randomSentence = Math.floor(Math.random() * sentences.length);
   let sentence = sentences[randomSentence];
