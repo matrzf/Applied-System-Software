@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function redirect() {
-  window.location.href = './menugenial/menu.html';
+  window.location.href = '../menugenial/menu.html';
 }
 
       
