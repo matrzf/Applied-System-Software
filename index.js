@@ -47,8 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
   let sentence = sentences[randomSentence];
   sentences = sentences.filter(value => value !== sentence);
   console.log(sentences);
-  let displayedSentence = "_".repeat(sentence.length);
-  
+  let displayedSentence = "";
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] === ' ') {
+        displayedSentence += ' ';
+    } else {  
+        displayedSentence += '_';
+    }
+  }
+  console.log(displayedSentence);
 
   const selectedPlayers = parseInt(playerSelect.value);
   usernameInputs.forEach((input, index) => {
@@ -180,7 +187,15 @@ document.addEventListener('DOMContentLoaded', function() {
     randomSentence = Math.floor(Math.random() * sentences.length);
     sentence = sentences[randomSentence];
 
-    displayedSentence = "_".repeat(sentence.length);
+    displayedSentence = "";
+    for (let i = 0; i < sentence.length; i++) {
+      if (sentence[i] === ' ') {
+          displayedSentence += ' ';
+      } else {  
+          displayedSentence += '_';
+      }
+    }
+    console.log(displayedSentence);
     updateDisplayedSentence();
     sentences = sentences.filter(value => value !== sentence);
     console.log(sentences);
@@ -232,7 +247,15 @@ document.addEventListener('DOMContentLoaded', function() {
     sentenceContainer.textContent = '';
     randomSentence = Math.floor(Math.random() * sentences.length);
     sentence = sentences[randomSentence];
-    displayedSentence = "_".repeat(sentence.length);
+    displayedSentence = "";
+    for (let i = 0; i < sentence.length; i++) {
+      if (sentence[i] === ' ') {
+          displayedSentence += ' ';
+      } else {  
+          displayedSentence += '_';
+      }
+    }
+    console.log(displayedSentence);
     sentences = sentences.filter(value => value !== sentence);
     console.log(sentences);
     hasSpun = false;
